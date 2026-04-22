@@ -23,4 +23,8 @@ export class GestionarMenuUseCase {
   async eliminar(id) {
     return await this.productoRepository.eliminar(id);
   }
+
+  async listarCategorias(id_local) {
+    return await this.productoRepository.listarCategorias(id_local);
+  }
 }

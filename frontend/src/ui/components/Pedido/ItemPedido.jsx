@@ -28,8 +28,13 @@ export const ItemPedido = ({ item, onEliminar, onActualizarComentario }) => {
           }}>
             {item.nombre}
             <span style={{
-              marginLeft: '8px', fontSize: '12px',
-              color: '#8A6A4A', fontWeight: 400,
+              marginLeft: '10px', fontSize: '13px',
+              color: '#F5E6C8', background: '#7C3A1E',
+              fontWeight: 700, padding: '2px 8px',
+              borderRadius: '12px', display: 'inline-block',
+              fontFamily: "'Lato', sans-serif",
+              verticalAlign: 'middle',
+              transform: 'translateY(-1px)'
             }}>
               x{item.cantidad}
             </span>

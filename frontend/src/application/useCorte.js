@@ -34,7 +34,23 @@ export const useCorte = () => {
     }
   };
 
+  const abrirDia = async () => {
+    if (corteActivo) throw new Error('Ya hay un día abierto.');
+    setLoading(true);
+    try {
+      const res = await corteApi.abrir();
+      if (!res.ok) throw new Error(res.message);
+      setCorteActivo(res.data);
+      return res.data;
+    } catch (e) {
+      setError(e.message);
+      throw e;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => { cargar(); }, []);
 
-  return { corteActivo, loading, error, cerrarDia, cargar };
+  return { corteActivo, loading, error, cerrarDia, abrirDia, cargar };
 };

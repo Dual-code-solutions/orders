@@ -8,7 +8,7 @@ import { Toast } from '../components/shared/Toast';
 
 export const Historial = () => {
   const { cortes, pedidosDelCorte, loading, verPedidos, eliminarHistorial, cargar } = useHistorial();
-  const { corteActivo, cerrarDia, loading: loadingCorte } = useCorte();
+  const { corteActivo, cerrarDia, abrirDia, loading: loadingCorte } = useCorte();
   const [corteExpandido, setCorteExpandido] = useState(null);
   const [pedidosCargados, setPedidosCargados] = useState({});
   const [modalCerrar, setModalCerrar] = useState(false);
@@ -53,11 +53,21 @@ export const Historial = () => {
     }
   };
 
+  const handleAbrirDia = async () => {
+    try {
+      await abrirDia();
+      mostrarToast('Día abierto correctamente');
+      cargar();
+    } catch (e) {
+      mostrarToast(e.message, 'error');
+    }
+  };
+
   return (
     <div style={{ minHeight: '100vh', background: '#F5ECD7', padding: '1rem' }}>
 
-      {/* Botón cerrar día */}
-      {corteActivo && (
+      {/* Botón cerrar/abrir día */}
+      {corteActivo ? (
         <div style={{
           background: '#FDF6EC', border: '1px solid #D4A96A',
           borderRadius: '12px', padding: '1rem',
@@ -82,6 +92,31 @@ export const Historial = () => {
           </div>
           <Button variant="secondary" size="sm" onClick={() => setModalCerrar(true)}>
             Cerrar día
+          </Button>
+        </div>
+      ) : (
+        <div style={{
+          background: '#FDF6EC', border: '1px solid #E8D5B0',
+          borderRadius: '12px', padding: '1rem',
+          marginBottom: '1rem',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        }}>
+          <div>
+            <p style={{
+              margin: 0, fontFamily: "'Playfair Display', serif",
+              fontSize: '15px', fontWeight: 700, color: '#2C1A0E',
+            }}>
+              Sin turno activo
+            </p>
+            <p style={{
+              margin: '2px 0 0', fontSize: '12px',
+              color: '#8A6A4A', fontFamily: "'Lato', sans-serif",
+            }}>
+              No hay un día abierto actualmente.
+            </p>
+          </div>
+          <Button variant="primary" size="sm" onClick={handleAbrirDia} disabled={loadingCorte}>
+            {loadingCorte ? 'Abriendo...' : 'Abrir día'}
           </Button>
         </div>
       )}

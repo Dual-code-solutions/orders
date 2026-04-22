@@ -4,6 +4,9 @@ export const menuApi = {
   listar: () =>
     fetch(`${BASE}/api/menu`).then((r) => r.json()),
 
+  listarCategorias: () =>
+    fetch(`${BASE}/api/menu/categorias`).then((r) => r.json()),
+
   agregar: (datos) =>
     fetch(`${BASE}/api/menu`, {
       method: 'POST',

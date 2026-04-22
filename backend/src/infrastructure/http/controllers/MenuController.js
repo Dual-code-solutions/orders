@@ -11,6 +11,14 @@ export class MenuController {
     } catch (e) { next(e); }
   };
 
+  listarCategorias = async (req, res, next) => {
+    try {
+      const id_local = process.env.LOCAL_ID_TIMUCUY;
+      const categorias = await this.gestionarMenuUseCase.listarCategorias(id_local);
+      res.json({ ok: true, data: categorias });
+    } catch (e) { next(e); }
+  };
+
   agregar = async (req, res, next) => {
     try {
       const id_local = process.env.LOCAL_ID_TIMUCUY;

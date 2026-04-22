@@ -3,14 +3,19 @@ import { menuApi } from '../infrastructure/api/menuApi';
 
 export const useMenu = () => {
   const [productos, setProductos] = useState([]);
+  const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const cargar = async () => {
     setLoading(true);
     try {
-      const res = await menuApi.listar();
-      setProductos(res.data || []);
+      const [resProductos, resCategorias] = await Promise.all([
+        menuApi.listar(),
+        menuApi.listarCategorias(),
+      ]);
+      setProductos(resProductos.data || []);
+      setCategorias(resCategorias.data || []);
     } catch (e) {
       setError(e.message);
     } finally {
@@ -40,5 +45,5 @@ export const useMenu = () => {
 
   useEffect(() => { cargar(); }, []);
 
-  return { productos, loading, error, agregar, editar, eliminar, cargar };
+  return { productos, categorias, loading, error, agregar, editar, eliminar, cargar };
 };

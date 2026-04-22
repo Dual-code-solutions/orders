@@ -54,4 +54,15 @@ export class ProductoRepository {
 
     if (error) throw new Error(error.message);
   }
+
+  async listarCategorias(id_local) {
+    const { data, error } = await supabase
+      .from('categorias')
+      .select('*')
+      .eq('id_local', id_local)
+      .order('nombre', { ascending: true });
+
+    if (error) throw new Error(error.message);
+    return data;
+  }
 }

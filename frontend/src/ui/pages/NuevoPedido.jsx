@@ -10,7 +10,7 @@ import { Toast } from '../components/shared/Toast';
 export const NuevoPedido = () => {
   const navigate = useNavigate();
   const { esMobile } = useResponsive();
-  const { productos, loading: loadingMenu } = useMenu();
+  const { productos, categorias, loading: loadingMenu } = useMenu();
   const {
     carrito, calcularTotal, agregarAlCarrito,
     quitarDelCarrito, actualizarComentario,

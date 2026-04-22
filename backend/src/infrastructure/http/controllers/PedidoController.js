@@ -24,7 +24,7 @@ export class PedidoController {
       if (!pedido) return res.status(404).json({ ok: false, message: 'Pedido no encontrado.' });
 
       const detalles = await this.detalleRepository.obtenerPorPedido(pedido.id);
-      const url = `${process.env.BASE_URL}/ticket/${pedido.id}`;
+      const url = `${process.env.BASE_URL}/ticket/${pedido.id}?cliente=true`;
       const qr = await this.qrGenerator.generar(url);
 
       res.json({ ok: true, data: { pedido, detalles, qr } });

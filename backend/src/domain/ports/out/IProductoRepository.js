@@ -4,4 +4,5 @@ export class IProductoRepository {
   async crear(producto) { throw new Error('No implementado'); }
   async actualizar(id, datos) { throw new Error('No implementado'); }
   async eliminar(id) { throw new Error('No implementado'); }
+  async listarCategorias(id_local) { throw new Error('No implementado'); }
 }
