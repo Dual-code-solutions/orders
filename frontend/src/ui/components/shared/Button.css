@@ -1,0 +1,100 @@
+/* =====================================================
+   BUTTON — Sistema de diseño POS Restaurante
+   Paleta: café oscuro #2C1810 | dorado #C9A84C | crema #F5EDD8
+===================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Tamaños */
+.btn--sm  { padding: 0.45rem 1rem;  font-size: 0.82rem; }
+.btn--md  { padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+.btn--lg  { padding: 0.9rem 1.8rem; font-size: 1.05rem; }
+.btn--full { width: 100%; }
+
+/* Variante primary (dorado) */
+.btn--primary {
+  background: linear-gradient(135deg, #C9A84C, #A87D28);
+  color: #1a0e05;
+  box-shadow: 0 4px 14px rgba(201, 168, 76, 0.35);
+}
+.btn--primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d9b85c, #be912f);
+  box-shadow: 0 6px 20px rgba(201, 168, 76, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Variante secondary (café transparente) */
+.btn--secondary {
+  background: rgba(44, 24, 16, 0.08);
+  color: #2C1810;
+  border: 1.5px solid #C9A84C66;
+}
+.btn--secondary:hover:not(:disabled) {
+  background: rgba(201, 168, 76, 0.12);
+  border-color: #C9A84C;
+}
+
+/* Variante danger (rojo suave) */
+.btn--danger {
+  background: linear-gradient(135deg, #c0392b, #962d22);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(192, 57, 43, 0.3);
+}
+.btn--danger:hover:not(:disabled) {
+  background: linear-gradient(135deg, #d44637, #a83529);
+  transform: translateY(-1px);
+}
+
+/* Variante ghost */
+.btn--ghost {
+  background: transparent;
+  color: #C9A84C;
+  border: 1.5px solid #C9A84C;
+}
+.btn--ghost:hover:not(:disabled) {
+  background: rgba(201, 168, 76, 0.1);
+}
+
+/* Ícono */
+.btn__icon {
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+/* Spinner de carga */
+.btn__spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

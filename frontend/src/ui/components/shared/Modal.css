@@ -1,0 +1,98 @@
+/* =====================================================
+   MODAL — Sistema de diseño POS Restaurante
+===================================================== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 8, 3, 0.72);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+  animation: overlayIn 0.2s ease;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.modal {
+  background: linear-gradient(160deg, #2e1a0e, #1e0f07);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  border-radius: 18px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(201,168,76,0.08);
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* Tamaños */
+.modal--sm { max-width: 380px; }
+.modal--md { max-width: 540px; }
+.modal--lg { max-width: 720px; }
+
+/* Header */
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.5rem 1rem;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  flex-shrink: 0;
+}
+
+.modal__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: #C9A84C;
+  margin: 0;
+}
+
+.modal__close {
+  background: none;
+  border: none;
+  color: #9d8772;
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+.modal__close:hover {
+  color: #C9A84C;
+  background: rgba(201, 168, 76, 0.1);
+}
+
+/* Body */
+.modal__body {
+  padding: 1.4rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  color: #e8d5b7;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Footer */
+.modal__footer {
+  padding: 1rem 1.5rem 1.3rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}

@@ -1,0 +1,24 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
+
+body {
+  background: #F5ECD7;
+  font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+input, button, textarea, select {
+  font-family: inherit;
+}
+
+/* Scrollbar sutil */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #D4A96A; border-radius: 4px; }
+
+/* Evitar zoom en inputs en iOS */
+@media (max-width: 640px) {
+  input, select, textarea { font-size: 16px !important; }
+}

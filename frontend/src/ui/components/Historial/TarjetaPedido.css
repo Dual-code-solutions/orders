@@ -1,0 +1,52 @@
+.tarjeta-pedido {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.12);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.tarjeta-pedido__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.tarjeta-pedido__id {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #9d8772;
+  letter-spacing: 0.08em;
+}
+.tarjeta-pedido__hora {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #C9A84C;
+}
+.tarjeta-pedido__detalles {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.tarjeta-pedido__detalle {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.4rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.83rem;
+  color: #e8d5b7;
+}
+.tarjeta-pedido__detalle em { color: #9d8772; font-size: 0.78rem; }
+.tarjeta-pedido__total {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dashed rgba(201,168,76,0.15);
+  padding-top: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  color: #b89b7a;
+}
+.tarjeta-pedido__total strong { color: #C9A84C; }

@@ -1,0 +1,115 @@
+.gestion-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+.gestion-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.gestion-menu__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  color: #C9A84C;
+  margin: 0;
+}
+.gestion-menu__loading,
+.gestion-menu__vacio {
+  color: #9d8772;
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  padding: 2rem 0;
+}
+.gestion-menu__tabla {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.gestion-menu__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(145deg, #2e1a0e, #1e0f07);
+  border: 1px solid rgba(201,168,76,0.15);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition: border-color 0.2s;
+}
+.gestion-menu__row:hover { border-color: rgba(201,168,76,0.4); }
+.gestion-menu__row-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.gestion-menu__nombre {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  color: #f0dbb0;
+}
+.gestion-menu__desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  color: #9d8772;
+}
+.gestion-menu__precio {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #C9A84C;
+  white-space: nowrap;
+}
+.gestion-menu__actions { display: flex; gap: 0.4rem; }
+.gestion-menu__edit-btn,
+.gestion-menu__del-btn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.15s;
+}
+.gestion-menu__edit-btn:hover { background: rgba(201,168,76,0.12); transform: scale(1.1); }
+.gestion-menu__del-btn:hover  { background: rgba(231,76,60,0.12);  transform: scale(1.1); }
+.gestion-menu__error {
+  background: rgba(231,76,60,0.1);
+  border: 1px solid rgba(231,76,60,0.3);
+  color: #e74c3c;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  font-family: 'Inter', sans-serif;
+  margin: 0 0 0.5rem;
+}
+.gestion-menu__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.gestion-menu__form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #b89b7a;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+.gestion-menu__form input {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 9px;
+  padding: 0.55rem 0.85rem;
+  color: #e8d5b7;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.gestion-menu__form input:focus { border-color: #C9A84C; }
+.gestion-menu__form input::placeholder { color: #5a4535; }

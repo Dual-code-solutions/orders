@@ -1,0 +1,100 @@
+.ticket {
+  background: linear-gradient(160deg, #2e1a0e, #1e0f07);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 18px;
+  padding: 1.5rem;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.ticket__header { text-align: center; }
+.ticket__titulo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: #C9A84C;
+  margin: 0 0 0.3rem;
+}
+.ticket__id {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  color: #9d8772;
+  margin: 0;
+  letter-spacing: 0.1em;
+}
+.ticket__fecha {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  color: #9d8772;
+  margin: 0.2rem 0 0;
+}
+.ticket__items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  border-top: 1px dashed rgba(201,168,76,0.2);
+  border-bottom: 1px dashed rgba(201,168,76,0.2);
+  padding: 0.8rem 0;
+}
+.ticket__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  color: #e8d5b7;
+  gap: 0.5rem;
+}
+.ticket__item-nombre { flex: 1; }
+.ticket__item-nombre em { color: #9d8772; font-size: 0.8rem; }
+.ticket__item-precio {
+  font-weight: 600;
+  color: #C9A84C;
+  white-space: nowrap;
+}
+.ticket__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  color: #e8d5b7;
+}
+.ticket__total strong { font-size: 1.5rem; color: #C9A84C; }
+.ticket__qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.ticket__qr img {
+  width: 160px;
+  height: 160px;
+  border-radius: 12px;
+  border: 2px solid rgba(201,168,76,0.3);
+}
+.ticket__qr p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  color: #9d8772;
+  margin: 0;
+}
+.ticket__nuevo-btn {
+  background: linear-gradient(135deg, #C9A84C, #A87D28);
+  color: #1a0e05;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+  width: 100%;
+}
+.ticket__nuevo-btn:hover { opacity: 0.9; transform: translateY(-1px); }
