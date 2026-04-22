@@ -144,7 +144,7 @@ export const HamburgerMenu = () => {
             fontFamily: "'Lato', sans-serif",
             letterSpacing: '0.05em',
           }}>
-            © 2026 Como En Casa
+            Como En Casa
           </p>
         </div>
       </div>
