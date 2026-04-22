@@ -13,7 +13,7 @@ export const NuevoPedido = () => {
   const { productos, categorias, loading: loadingMenu } = useMenu();
   const {
     carrito, calcularTotal, agregarAlCarrito,
-    quitarDelCarrito, actualizarComentario,
+    quitarDelCarrito, cambiarCantidad, actualizarComentario,
     limpiarCarrito, confirmarPedido, loading,
   } = usePedido();
 
@@ -93,6 +93,7 @@ export const NuevoPedido = () => {
               carrito={carrito}
               total={calcularTotal()}
               onEliminar={quitarDelCarrito}
+              onCambiarCantidad={cambiarCantidad}
               onActualizarComentario={actualizarComentario}
               onConfirmar={handleConfirmar}
               onLimpiar={limpiarCarrito}
@@ -144,6 +145,7 @@ export const NuevoPedido = () => {
             carrito={carrito}
             total={calcularTotal()}
             onEliminar={quitarDelCarrito}
+            onCambiarCantidad={cambiarCantidad}
             onActualizarComentario={actualizarComentario}
             onConfirmar={handleConfirmar}
             onLimpiar={limpiarCarrito}

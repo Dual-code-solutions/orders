@@ -5,6 +5,7 @@ import { ListaPedidos } from '../components/Historial/ListaPedidos';
 import { Modal } from '../components/shared/Modal';
 import { Button } from '../components/shared/Button';
 import { Toast } from '../components/shared/Toast';
+import { parseUTC } from '../../utils/dateFormatter';
 
 export const Historial = () => {
   const { cortes, pedidosDelCorte, loading, verPedidos, eliminarHistorial, cargar } = useHistorial();
@@ -85,7 +86,7 @@ export const Historial = () => {
               margin: '2px 0 0', fontSize: '12px',
               color: '#8A6A4A', fontFamily: "'Lato', sans-serif",
             }}>
-              {new Date(corteActivo.fecha).toLocaleDateString('es-MX', {
+              {parseUTC(corteActivo.fecha).toLocaleDateString('es-MX', {
                 day: '2-digit', month: 'long', year: 'numeric',
               })}
             </p>
@@ -158,7 +159,7 @@ export const Historial = () => {
                     fontSize: '14px', fontWeight: 700, color: '#2C1A0E',
                     textTransform: 'capitalize',
                   }}>
-                    {new Date(corte.fecha).toLocaleDateString('es-MX', {
+                    {parseUTC(corte.fecha).toLocaleDateString('es-MX', {
                       weekday: 'long', day: '2-digit', month: 'long',
                     })}
                   </p>
@@ -167,7 +168,17 @@ export const Historial = () => {
                     color: corte.cerrado ? '#1D9E75' : '#D4A96A',
                     fontFamily: "'Lato', sans-serif",
                   }}>
-                    {corte.cerrado ? '✓ Cerrado' : '🟢 Activo'}
+                    {corte.cerrado ? (
+                      <span style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                        <span>✓ Cerrado</span>
+                        <span style={{ color: '#D4A96A' }}>•</span>
+                        <span style={{ color: '#7C3A1E', fontWeight: 700 }}>
+                          ${Number(corte.total_ventas || 0).toFixed(2)}
+                        </span>
+                      </span>
+                    ) : (
+                      '🟢 Activo'
+                    )}
                   </p>
                 </div>
                 <span style={{

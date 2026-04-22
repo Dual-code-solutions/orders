@@ -14,7 +14,7 @@ export class RegistrarPedidoUseCase {
     // 1. Validar detalles
     validarPedido(detalles);
 
-    // 2. Buscar corte activo o crear uno nuevo
+    // 2.  corte activo o crear uno nuevo
     let corte = await this.corteRepository.obtenerActivo(id_local);
     if (!corte) {
       corte = await this.corteRepository.crear({

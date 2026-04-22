@@ -1,5 +1,7 @@
+import { parseUTC } from '../../../utils/dateFormatter';
+
 export const Ticket = ({ pedido, detalles, qr }) => {
-  const fecha = new Date(pedido.fecha_hora);
+  const fecha = parseUTC(pedido.fecha_hora);
   const fechaStr = fecha.toLocaleDateString('es-MX', {
     day: '2-digit', month: 'long', year: 'numeric',
   });

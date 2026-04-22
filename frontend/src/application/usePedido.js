@@ -41,6 +41,19 @@ export const usePedido = () => {
     );
   };
 
+  const cambiarCantidad = (producto_id, comentario, delta) => {
+    setCarrito((prev) => {
+      const nuevoCarrito = prev.map((i) => {
+        if (i.producto_id === producto_id && i.comentario === comentario) {
+          return { ...i, cantidad: i.cantidad + delta };
+        }
+        return i;
+      });
+      // Filtrar los que llegaron a 0 o menos
+      return nuevoCarrito.filter((i) => i.cantidad > 0);
+    });
+  };
+
   const actualizarComentario = (producto_id, comentarioViejo, comentarioNuevo) => {
     setCarrito((prev) =>
       prev.map((i) =>
@@ -98,6 +111,7 @@ export const usePedido = () => {
     error,
     agregarAlCarrito,
     quitarDelCarrito,
+    cambiarCantidad,
     actualizarComentario,
     limpiarCarrito,
     calcularTotal,

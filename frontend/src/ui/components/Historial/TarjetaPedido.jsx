@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import { parseUTC } from '../../../utils/dateFormatter';
 
 export const TarjetaPedido = ({ pedido }) => {
   const [expandido, setExpandido] = useState(false);
 
-  const fecha = new Date(pedido.fecha_hora);
+  const fecha = parseUTC(pedido.fecha_hora);
   const horaStr = fecha.toLocaleTimeString('es-MX', {
     hour: '2-digit', minute: '2-digit',
   });

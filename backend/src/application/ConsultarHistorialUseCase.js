@@ -6,7 +6,21 @@ export class ConsultarHistorialUseCase {
   }
 
   async listarCortes(id_local) {
-    return await this.corteRepository.listar(id_local);
+    const cortes = await this.corteRepository.listar(id_local);
+    
+    // Calcular el total para cortes cerrados (para que se muestre en el acordeón sin expandir)
+    const cortesConTotales = await Promise.all(
+      cortes.map(async (corte) => {
+        if (corte.cerrado) {
+          const pedidos = await this.pedidoRepository.listarPorCorte(corte.id);
+          const total = pedidos.reduce((acc, p) => acc + Number(p.total), 0);
+          return { ...corte, total_ventas: total };
+        }
+        return corte;
+      })
+    );
+    
+    return cortesConTotales;
   }
 
   async obtenerPedidosDeCorte(corte_id) {

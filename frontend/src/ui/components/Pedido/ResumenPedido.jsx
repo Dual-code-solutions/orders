@@ -6,6 +6,7 @@ export const ResumenPedido = ({
   carrito,
   total,
   onEliminar,
+  onCambiarCantidad,
   onActualizarComentario,
   onConfirmar,
   onLimpiar,
@@ -15,12 +16,34 @@ export const ResumenPedido = ({
 
   if (!carrito.length) return (
     <div style={{
-      padding: '2rem 1rem', textAlign: 'center',
-      color: '#8A6A4A', fontFamily: "'Lato', sans-serif",
-      fontSize: '14px',
+      display: 'flex', flexDirection: 'column',
+      justifyContent: 'center', alignItems: 'center',
+      height: '100%', padding: '2rem',
+      textAlign: 'center',
+      background: 'linear-gradient(to bottom, #FDF6EC, #FAF0E0)',
     }}>
-      <p style={{ fontSize: '2rem', margin: '0 0 8px' }}>🍽️</p>
-      Agrega productos para iniciar el pedido
+      <div style={{
+        width: '80px', height: '80px',
+        background: '#F5ECD7', borderRadius: '50%',
+        display: 'flex', justifyContent: 'center', alignItems: 'center',
+        marginBottom: '1rem',
+        boxShadow: 'inset 0 2px 4px rgba(44, 26, 14, 0.05), 0 8px 16px rgba(44, 26, 14, 0.05)',
+      }}>
+        <span style={{ fontSize: '2.5rem' }}>🍽️</span>
+      </div>
+      <p style={{
+        margin: '0 0 8px', fontSize: '18px', fontWeight: 700,
+        fontFamily: "'Playfair Display', serif", color: '#2C1A0E',
+      }}>
+        Tu pedido está vacío
+      </p>
+      <p style={{
+        margin: 0, fontSize: '14px', color: '#8A6A4A',
+        fontFamily: "'Lato', sans-serif", lineHeight: 1.5,
+        maxWidth: '220px',
+      }}>
+        Agrega platillos desde el menú a la izquierda para comenzar a tomar la orden.
+      </p>
     </div>
   );
 
@@ -34,6 +57,7 @@ export const ResumenPedido = ({
             key={`${item.producto_id}-${item.comentario}`}
             item={item}
             onEliminar={onEliminar}
+            onCambiarCantidad={onCambiarCantidad}
             onActualizarComentario={onActualizarComentario}
           />
         ))}

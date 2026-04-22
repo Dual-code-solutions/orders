@@ -1,7 +1,8 @@
 import { TarjetaPedido } from './TarjetaPedido';
+import { parseUTC } from '../../../utils/dateFormatter';
 
 export const ListaPedidos = ({ corte, pedidos, onEliminarCorte, loading }) => {
-  const fecha = new Date(corte.fecha).toLocaleDateString('es-MX', {
+  const fecha = parseUTC(corte.fecha).toLocaleDateString('es-MX', {
     weekday: 'long', day: '2-digit', month: 'long', year: 'numeric',
   });
 
