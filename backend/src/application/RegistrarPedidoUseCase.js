@@ -27,11 +27,11 @@ export class RegistrarPedidoUseCase {
     // 3. Calcular total
     const total = calcularTotal(detalles);
 
-    // 4. Crear pedido
+    // 4. Crear pedido (fecha_hora la genera Supabase con now() en UTC)
     const pedido = await this.pedidoRepository.crear({
       corte_id: corte.id,
       cliente,
-      fecha_hora: new Date(),
+      fecha_hora: new Date().toISOString(),
       total,
     });
 
