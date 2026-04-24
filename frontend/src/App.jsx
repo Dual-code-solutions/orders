@@ -5,6 +5,7 @@ import { NuevoPedido } from './ui/pages/NuevoPedido';
 import { TicketPage } from './ui/pages/TicketPage';
 import { Historial } from './ui/pages/Historial';
 import { GestionMenu } from './ui/pages/GestionMenu';
+import { Soporte } from './ui/pages/Soporte';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -15,6 +16,7 @@ function AnimatedRoutes() {
         <Route path="/ticket/:id" element={<TicketPage />} />
         <Route path="/historial"  element={<Historial />} />
         <Route path="/menu"       element={<GestionMenu />} />
+        <Route path="/soporte"    element={<Soporte />} />
       </Routes>
     </PageTransition>
   );

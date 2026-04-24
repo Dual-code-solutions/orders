@@ -15,6 +15,12 @@ const NAV_SECTIONS = [
       { path: '/historial', label: 'Historial', icon: '📋' },
       { path: '/menu', label: 'Gestión Menú', icon: '⚙️' },
     ]
+  },
+  {
+    title: 'AYUDA',
+    items: [
+      { path: '/soporte', label: 'Soporte', icon: '🛠️' },
+    ]
   }
 ];
 
