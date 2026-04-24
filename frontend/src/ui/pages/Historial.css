@@ -31,3 +31,44 @@
   flex-direction: column;
   gap: 0.75rem;
 }
+
+/* ── Animación expandir contenido del corte ── */
+.historial-expand {
+  animation: expandIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Badge corte activo pulsante ── */
+.badge-activo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  animation: pulseBadge 2.2s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* ── Hover de filas de corte ── */
+.corte-row {
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.corte-row:hover {
+  background: #FFF8F0 !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 30, 0.08);
+  transform: translateX(2px);
+}
+

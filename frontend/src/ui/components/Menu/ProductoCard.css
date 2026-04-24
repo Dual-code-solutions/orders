@@ -1,83 +1,170 @@
+/* =====================================================
+   PRODUCTO CARD — Premium redesign
+===================================================== */
+
 .producto-card {
-  background: linear-gradient(145deg, #2e1a0e, #1e0f07);
-  border: 1px solid rgba(201, 168, 76, 0.2);
-  border-radius: 14px;
-  padding: 1rem;
+  background: linear-gradient(160deg, #FFFFFF 0%, #FDF6EC 100%);
+  border: 1px solid #E8D5B0;
+  border-radius: 16px;
+  padding: 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  cursor: default;
-}
-.producto-card:hover {
-  border-color: rgba(201, 168, 76, 0.5);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-}
-.producto-card--added {
-  animation: addPulse 0.4s ease;
-}
-@keyframes addPulse {
-  0%   { border-color: #C9A84C; box-shadow: 0 0 0 0 rgba(201,168,76,0.5); }
-  50%  { box-shadow: 0 0 0 8px rgba(201,168,76,0); }
-  100% { border-color: rgba(201,168,76,0.2); }
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 110px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: cardIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) both;
 }
 
-.producto-card__header {
+.producto-card:hover {
+  border-color: #C9A06A;
+  box-shadow: 0 10px 30px rgba(124, 58, 30, 0.14), 0 2px 8px rgba(124, 58, 30, 0.06);
+  transform: translateY(-4px);
+}
+
+/* ── Shimmer diagonal al hover ── */
+.producto-card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -80%;
+  width: 55%;
+  height: 220%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.65) 50%,
+    transparent 100%
+  );
+  transform: skewX(-22deg);
+  pointer-events: none;
+  transition: none;
+  z-index: 2;
+}
+
+.producto-card:hover::before {
+  left: 130%;
+  transition: left 0.55s ease;
+}
+
+/* ── Línea de acento superior ── */
+.producto-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #D4A96A 0%, rgba(212, 169, 106, 0.2) 100%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  border-radius: 16px 16px 0 0;
+}
+
+.producto-card:hover::after {
+  opacity: 1;
+}
+
+/* ── Animación de entrada escalonada ── */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Nombre ── */
+.producto-card__nombre {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  color: #2C1A0E;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Footer: precio + botón ── */
+.producto-card__footer {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
+  align-items: center;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
 }
-.producto-card__nombre {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 0.95rem;
-  color: #f0dbb0;
-  margin: 0;
-  line-height: 1.3;
-}
+
+/* ── Badge precio ── */
 .producto-card__precio {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
+  font-size: 14px;
   font-weight: 700;
-  color: #C9A84C;
-  white-space: nowrap;
+  color: #7C3A1E;
+  font-family: 'Lato', sans-serif;
+  background: linear-gradient(135deg, #FFF5E0 0%, #F5E6C8 100%);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 160, 106, 0.45);
+  letter-spacing: 0.02em;
 }
-.producto-card__desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
-  color: #9d8772;
-  margin: 0;
-  line-height: 1.4;
-}
-.producto-card__comentario {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(201,168,76,0.3);
-  border-radius: 8px;
-  padding: 0.4rem 0.7rem;
-  color: #e8d5b7;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-.producto-card__comentario:focus {
-  border-color: #C9A84C;
-}
-.producto-card__actions {
+
+/* ── Botón + ── */
+.producto-card__btn {
+  position: relative;
+  background: #F5E6C8;
+  color: #7C3A1E;
+  border: 1.5px solid rgba(201, 160, 106, 0.5);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-top: auto;
-}
-.producto-card__nota-btn {
-  background: none;
-  border: none;
-  font-size: 1.1rem;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 1;
   cursor: pointer;
-  opacity: 0.7;
-  transition: opacity 0.2s, transform 0.15s;
-  padding: 0.2rem;
+  overflow: hidden;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
-.producto-card__nota-btn:hover { opacity: 1; transform: scale(1.15); }
+
+.producto-card:hover .producto-card__btn {
+  background: #7C3A1E;
+  color: #FDF6EC;
+  border-color: #7C3A1E;
+  box-shadow: 0 4px 14px rgba(124, 58, 30, 0.35);
+  transform: scale(1.1);
+}
+
+/* ── Ripple en el botón ── */
+.producto-card__ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.45);
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleAnim 0.55s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: translate(-50%, -50%) scale(3.5);
+    opacity: 0;
+  }
+}

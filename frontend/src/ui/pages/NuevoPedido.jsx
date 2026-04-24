@@ -112,29 +112,42 @@ export const NuevoPedido = () => {
   // ── Mobile: layout con tabs ──
   return (
     <div style={{ minHeight: '100vh', background: '#F5ECD7' }}>
+      {/* Tab bar con indicador deslizante */}
       <div style={{
-        display: 'flex',
-        borderBottom: '1px solid #E8D5B0',
-        background: '#FDF6EC',
         position: 'sticky', top: '60px', zIndex: 10,
+        background: '#FDF6EC',
+        borderBottom: '1px solid #E8D5B0',
       }}>
-        {['menu', 'resumen'].map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setVista(tab)}
-            style={{
-              flex: 1, padding: '14px',
-              background: 'none', border: 'none',
-              borderBottom: vista === tab ? '3px solid #7C3A1E' : '3px solid transparent',
-              color: vista === tab ? '#7C3A1E' : '#8A6A4A',
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '14px', fontWeight: 700,
-              cursor: 'pointer', transition: 'all 0.2s',
-            }}
-          >
-            {tab === 'menu' ? '🍽️ Menú' : `🛒 Pedido (${carrito.length})`}
-          </button>
-        ))}
+        <div style={{ display: 'flex', position: 'relative' }}>
+          {['menu', 'resumen'].map((tab) => (
+            <button
+              key={tab}
+              onClick={() => setVista(tab)}
+              style={{
+                flex: 1, padding: '14px',
+                background: 'none', border: 'none',
+                color: vista === tab ? '#7C3A1E' : '#8A6A4A',
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '14px', fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'color 0.25s ease',
+              }}
+            >
+              {tab === 'menu' ? '🍽️ Menú' : `🛒 Pedido (${carrito.length})`}
+            </button>
+          ))}
+          {/* Indicador deslizante */}
+          <div style={{
+            position: 'absolute',
+            bottom: 0,
+            left: vista === 'menu' ? '0%' : '50%',
+            width: '50%',
+            height: '3px',
+            background: 'linear-gradient(90deg, #7C3A1E, #C9A84C)',
+            borderRadius: '3px 3px 0 0',
+            transition: 'left 0.32s cubic-bezier(0.4, 0, 0.2, 1)',
+          }} />
+        </div>
       </div>
 
       {vista === 'menu' ? (

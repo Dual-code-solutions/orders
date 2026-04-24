@@ -89,8 +89,8 @@ export const MenuGrid = ({ productos, onAgregar, loading }) => {
           gridTemplateColumns: columnas,
           gap: esMobile ? '12px' : '16px',
         }}>
-          {productosFiltrados.map((p) => (
-            <ProductoCard key={p.id} producto={p} onAgregar={onAgregar} />
+          {productosFiltrados.map((p, i) => (
+            <ProductoCard key={p.id} producto={p} onAgregar={onAgregar} index={i} />
           ))}
         </div>
       )}

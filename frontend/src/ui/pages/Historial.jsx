@@ -6,6 +6,7 @@ import { Modal } from '../components/shared/Modal';
 import { Button } from '../components/shared/Button';
 import { Toast } from '../components/shared/Toast';
 import { parseUTC } from '../../utils/dateFormatter';
+import './Historial.css';
 
 export const Historial = () => {
   const { cortes, pedidosDelCorte, loading, verPedidos, eliminarHistorial, cargar } = useHistorial();
@@ -144,13 +145,17 @@ export const Historial = () => {
               {/* Botón para expandir corte */}
               <button
                 onClick={() => handleExpandir(corte.id)}
+                className="corte-row"
                 style={{
-                  width: '100%', background: '#FDF6EC',
-                  border: '1px solid #E8D5B0', borderRadius: '10px',
-                  padding: '12px 14px', cursor: 'pointer',
+                  width: '100%',
+                  background: corteExpandido === corte.id ? '#FFF8F0' : '#FDF6EC',
+                  border: '1px solid',
+                  borderColor: corteExpandido === corte.id ? '#D4A96A' : '#E8D5B0',
+                  borderRadius: corteExpandido === corte.id ? '10px 10px 0 0' : '10px',
+                  padding: '13px 16px', cursor: 'pointer',
                   display: 'flex', justifyContent: 'space-between',
                   alignItems: 'center',
-                  marginBottom: corteExpandido === corte.id ? '8px' : 0,
+                  boxShadow: corteExpandido === corte.id ? '0 2px 8px rgba(124,58,30,0.06)' : 'none',
                 }}
               >
                 <div style={{ textAlign: 'left' }}>
@@ -163,13 +168,9 @@ export const Historial = () => {
                       weekday: 'long', day: '2-digit', month: 'long',
                     })}
                   </p>
-                  <p style={{
-                    margin: '2px 0 0', fontSize: '11px',
-                    color: corte.cerrado ? '#1D9E75' : '#D4A96A',
-                    fontFamily: "'Lato', sans-serif",
-                  }}>
+                  <div style={{ marginTop: '3px', fontSize: '11px', fontFamily: "'Lato', sans-serif" }}>
                     {corte.cerrado ? (
-                      <span style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+                      <span style={{ display: 'inline-flex', gap: '8px', alignItems: 'center', color: '#1D9E75' }}>
                         <span>✓ Cerrado</span>
                         <span style={{ color: '#D4A96A' }}>•</span>
                         <span style={{ color: '#7C3A1E', fontWeight: 700 }}>
@@ -177,26 +178,32 @@ export const Historial = () => {
                         </span>
                       </span>
                     ) : (
-                      '🟢 Activo'
+                      <span className="badge-activo" style={{ color: '#D4A96A' }}>
+                        <span style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#D4A96A', display: 'inline-block' }} />
+                        Turno activo
+                      </span>
                     )}
-                  </p>
+                  </div>
                 </div>
                 <span style={{
                   color: '#8A6A4A', fontSize: '12px',
                   transform: corteExpandido === corte.id ? 'rotate(180deg)' : 'none',
-                  transition: 'transform 0.2s', display: 'inline-block',
+                  transition: 'transform 0.28s cubic-bezier(0.4, 0, 0.2, 1)',
+                  display: 'inline-block',
                 }}>
                   ▼
                 </span>
               </button>
 
               {corteExpandido === corte.id && (
-                <ListaPedidos
-                  corte={corte}
-                  pedidos={pedidosCargados[corte.id] || []}
-                  onEliminarCorte={handleEliminar}
-                  loading={loading}
-                />
+                <div className="historial-expand" style={{ borderRadius: '0 0 10px 10px', overflow: 'hidden', border: '1px solid #D4A96A', borderTop: 'none' }}>
+                  <ListaPedidos
+                    corte={corte}
+                    pedidos={pedidosCargados[corte.id] || []}
+                    onEliminarCorte={handleEliminar}
+                    loading={loading}
+                  />
+                </div>
               )}
             </div>
           ))

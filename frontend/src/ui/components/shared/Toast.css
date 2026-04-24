@@ -1,0 +1,54 @@
+/* =====================================================
+   TOAST — Animaciones de entrada y salida
+===================================================== */
+
+.toast {
+  position: fixed;
+  bottom: 1.75rem;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  z-index: 2000;
+  white-space: nowrap;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  animation: toastIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  will-change: transform, opacity;
+}
+
+.toast--out {
+  animation: toastOut 0.3s ease forwards;
+}
+
+.toast__icon {
+  font-size: 15px;
+  font-style: normal;
+  opacity: 0.9;
+}
+
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+@keyframes toastOut {
+  from {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(14px) scale(0.95);
+  }
+}

@@ -1,31 +1,32 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import './Toast.css';
 
 export const Toast = ({ message, type = 'success', onClose }) => {
+  const [leaving, setLeaving] = useState(false);
+
   useEffect(() => {
-    const t = setTimeout(onClose, 3000);
-    return () => clearTimeout(t);
+    // Espera 2.7s, luego activa la animación de salida (0.3s), luego llama onClose
+    const exitTimer = setTimeout(() => {
+      setLeaving(true);
+      setTimeout(onClose, 300);
+    }, 2700);
+    return () => clearTimeout(exitTimer);
   }, [onClose]);
 
   const colors = {
-    success: { bg: '#1D9E75', color: '#fff' },
-    error:   { bg: '#A32D2D', color: '#fff' },
-    info:    { bg: '#7C3A1E', color: '#F5E6C8' },
+    success: { bg: '#1D9E75', color: '#fff', icon: '✓' },
+    error:   { bg: '#A32D2D', color: '#fff', icon: '✕' },
+    info:    { bg: '#7C3A1E', color: '#F5E6C8', icon: 'ℹ' },
   };
 
+  const c = colors[type] ?? colors.info;
+
   return (
-    <div style={{
-      position: 'fixed', bottom: '1.5rem', left: '50%',
-      transform: 'translateX(-50%)',
-      background: colors[type].bg,
-      color: colors[type].color,
-      padding: '12px 24px',
-      borderRadius: '10px',
-      fontSize: '14px',
-      fontFamily: "'Playfair Display', serif",
-      zIndex: 2000,
-      whiteSpace: 'nowrap',
-      boxShadow: '0 4px 16px rgba(0,0,0,0.2)',
-    }}>
+    <div
+      className={`toast ${leaving ? 'toast--out' : ''}`}
+      style={{ background: c.bg, color: c.color }}
+    >
+      <span className="toast__icon">{c.icon}</span>
       {message}
     </div>
   );
