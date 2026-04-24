@@ -1,20 +1,18 @@
 /* =====================================================
    PAGE TRANSITION — Animación de entrada por ruta
+
+   IMPORTANTE: Solo usamos opacity, NO transform.
+   Cualquier transform en un ancestro crea un nuevo
+   "containing block" para position:fixed, lo que hace
+   que Toasts y Modales se posicionen mal.
 ===================================================== */
 
 .page-transition {
   width: 100%;
-  animation: pageIn 0.38s cubic-bezier(0.4, 0, 0.2, 1) both;
-  will-change: opacity, transform;
+  animation: pageIn 0.35s ease both;
 }
 
 @keyframes pageIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
