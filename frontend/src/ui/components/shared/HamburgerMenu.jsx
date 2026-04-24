@@ -149,33 +149,37 @@ export const HamburgerMenu = () => {
         </div>
       </div>
 
-      {/* Topbar */}
+      {/* ── Topbar premium ── */}
       <header style={{
         position: 'fixed', top: 0, left: 0, right: 0,
         height: '64px',
-        background: 'linear-gradient(90deg, #2C1A0E 0%, #3d2413 100%)',
-        display: 'flex', alignItems: 'center',
+        background: 'linear-gradient(135deg, #1A0C05 0%, #2C1A0E 45%, #3A200F 100%)',
+        borderBottom: '1px solid rgba(212, 169, 106, 0.25)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.35), 0 1px 0 rgba(212,169,106,0.12)',
+        display: 'flex',
+        alignItems: 'center',
         padding: '0 1rem',
         zIndex: 997,
-        boxShadow: '0 2px 12px rgba(0,0,0,0.15)',
       }}>
+
+        {/* Botón hamburguesa */}
         <button
           onClick={() => setOpen(!open)}
           style={{
             background: 'none', border: 'none',
-            cursor: 'pointer', padding: '10px',
+            cursor: 'pointer', padding: '8px',
             display: 'flex', flexDirection: 'column',
-            gap: '5px',
-            borderRadius: '8px',
+            gap: '5px', borderRadius: '10px',
             transition: 'background 0.2s',
+            flexShrink: 0,
           }}
-          onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
+          onMouseEnter={e => e.currentTarget.style.background = 'rgba(212,169,106,0.1)'}
           onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
         >
           {[0, 1, 2].map((i) => (
             <span key={i} style={{
-              display: 'block', width: '24px', height: '2px',
-              background: '#D4A96A',
+              display: 'block', width: '22px', height: '2px',
+              background: '#C8A87A',
               borderRadius: '2px',
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
               transform: open
@@ -187,15 +191,68 @@ export const HamburgerMenu = () => {
           ))}
         </button>
 
-        <span style={{
-          marginLeft: '1rem',
-          color: '#F5E6C8',
-          fontFamily: "'Playfair Display', serif",
-          fontSize: esMobile ? '16px' : '18px', fontWeight: 700,
-          letterSpacing: '0.02em',
+        {/* Centro: logo + nombre (absoluto para quedar centrado en la barra) */}
+        <div style={{
+          position: 'absolute', left: 0, right: 0,
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          gap: '10px',
+          pointerEvents: 'none',
         }}>
-          Como en Casa
-        </span>
+          {/* Círculo logo */}
+          <div style={{
+            width: '36px', height: '36px',
+            borderRadius: '50%',
+            border: '1.5px solid rgba(212,169,106,0.55)',
+            boxShadow: '0 0 12px rgba(212,169,106,0.18), 0 2px 8px rgba(0,0,0,0.45)',
+            overflow: 'hidden',
+            flexShrink: 0,
+            background: '#2C1A0E',
+          }}>
+            <img
+              src="/logo.png"
+              alt="Como en Casa"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+              onError={e => { e.target.style.display = 'none'; }}
+            />
+          </div>
+
+          {/* Texto */}
+          <div style={{ textAlign: 'left' }}>
+            <p style={{
+              margin: 0,
+              fontFamily: "'Playfair Display', serif",
+              fontSize: esMobile ? '15px' : '17px',
+              fontWeight: 700,
+              color: '#F0DDB8',
+              letterSpacing: '0.03em',
+              lineHeight: 1.15,
+              textShadow: '0 1px 6px rgba(0,0,0,0.5)',
+            }}>
+              Como en Casa
+            </p>
+            <p style={{
+              margin: 0,
+              fontFamily: "'Lato', sans-serif",
+              fontSize: '9px',
+              color: '#D4A96A',
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              opacity: 0.8,
+            }}>
+              Sistema POS
+            </p>
+          </div>
+        </div>
+
+        {/* Indicador de estado (verde = activo) */}
+        <div style={{ marginLeft: 'auto', flexShrink: 0 }}>
+          <div style={{
+            width: '8px', height: '8px',
+            borderRadius: '50%',
+            background: '#2ECC71',
+            boxShadow: '0 0 7px rgba(46,204,113,0.75)',
+          }} />
+        </div>
       </header>
 
       {/* Espaciado para el topbar */}
