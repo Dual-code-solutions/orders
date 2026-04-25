@@ -1,10 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { PresentacionOverlay } from '../components/Presentacion/PresentacionOverlay';
 
 const WHATSAPP = '529994969520';
 
 const secciones = [
   {
-    icono: '🍽️',
     titulo: 'Módulo 1 — Registro de Pedidos',
     color: '#7C3A1E',
     pasos: [
@@ -31,7 +31,6 @@ const secciones = [
     ],
   },
   {
-    icono: '🎫',
     titulo: 'Módulo 2 — Ticket y Código QR',
     color: '#2E7D32',
     pasos: [
@@ -54,7 +53,6 @@ const secciones = [
     ],
   },
   {
-    icono: '⚙️',
     titulo: 'Módulo 3 — Gestión del Menú',
     color: '#1565C0',
     pasos: [
@@ -81,7 +79,6 @@ const secciones = [
     ],
   },
   {
-    icono: '📋',
     titulo: 'Módulo 4 — Historial y Cierre de Caja',
     color: '#6A1E6A',
     pasos: [
@@ -132,15 +129,17 @@ const SeccionAyuda = ({ seccion }) => {
           textAlign: 'left',
         }}
       >
-        <span style={{
-          fontSize: '20px',
-          background: `${seccion.color}18`,
-          padding: '8px', borderRadius: '10px',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          flexShrink: 0,
-        }}>
-          {seccion.icono}
-        </span>
+        {seccion.icono && (
+          <span style={{
+            fontSize: '20px',
+            background: `${seccion.color}18`,
+            padding: '8px', borderRadius: '10px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            flexShrink: 0,
+          }}>
+            {seccion.icono}
+          </span>
+        )}
         <p style={{
           margin: 0, flex: 1,
           fontFamily: "'Playfair Display', serif",
@@ -209,6 +208,18 @@ const SeccionAyuda = ({ seccion }) => {
 
 /* ── Página principal de Soporte ── */
 export const Soporte = () => {
+  const [showPresentation, setShowPresentation] = useState(true);
+  const [fadeOutPresentation, setFadeOutPresentation] = useState(false);
+
+  const handleExplosion = () => {
+    // Al estallar el planeta, empezamos a desvanecer la presentación
+    setFadeOutPresentation(true);
+    // Y la desmontamos completamente tras 4 segundos (para que acaben los escombros)
+    setTimeout(() => {
+      setShowPresentation(false);
+    }, 4000);
+  };
+
   const handleWhatsApp = () => {
     window.open(
       `https://wa.me/${WHATSAPP}?text=Hola,%20necesito%20ayuda%20con%20el%20sistema%20POS%20de%20Como%20en%20Casa`,
@@ -217,7 +228,14 @@ export const Soporte = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#F5ECD7', padding: '1rem 1rem 3rem' }}>
+    <>
+      {/* Overlay cinemático de 3D */}
+      {showPresentation && (
+        <PresentacionOverlay onExplosion={handleExplosion} fadeOut={fadeOutPresentation} />
+      )}
+
+      {/* Contenido principal de soporte, que estará debajo del overlay */}
+      <div style={{ minHeight: '100vh', background: '#F5ECD7', padding: '1rem 1rem 3rem' }}>
 
       {/* ── Hero header ── */}
       <div style={{
@@ -238,7 +256,6 @@ export const Soporte = () => {
           background: 'radial-gradient(ellipse, rgba(212,169,106,0.12) 0%, transparent 70%)',
           pointerEvents: 'none',
         }} />
-        <p style={{ margin: 0, fontSize: '30px', position: 'relative', zIndex: 1 }}>🛠️</p>
         <p style={{
           margin: '10px 0 4px',
           fontFamily: "'Playfair Display', serif",
@@ -275,7 +292,6 @@ export const Soporte = () => {
         textAlign: 'center',
         boxShadow: '0 4px 16px rgba(124,58,30,0.08)',
       }}>
-        <p style={{ fontSize: '26px', margin: '0 0 10px' }}>💬</p>
         <p style={{
           margin: '0 0 4px',
           fontFamily: "'Playfair Display', serif",
@@ -330,6 +346,7 @@ export const Soporte = () => {
           Contactar por WhatsApp
         </button>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
