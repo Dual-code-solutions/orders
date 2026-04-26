@@ -69,9 +69,9 @@
 
 #logo-pieces {
   position: absolute;
-  width: 266px; height: 229px;
+  width: 500px; height: 409px;
   top: 50%; left: 50%;
-  transform: translate(-50%,-50%) scale(1.1);
+  transform: translate(-50%,-50%) scale(0.6);
   transform-origin: center center;
   overflow: visible;
 }
@@ -139,6 +139,9 @@
   text-align: center;
   pointer-events: none;
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
 .tchar { display: inline-block; opacity: 0; will-change: transform,opacity; }

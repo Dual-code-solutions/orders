@@ -56,7 +56,18 @@ export const PresentacionOverlay = ({ onExplosion, fadeOut }) => {
             <span className="brand-word" id="w1">DUAL CODE</span>
             <span className="brand-word" id="w2">SOLUTIONS</span>
           </h1>
-          <p id="tagline">Bienvenidos al software que transforma</p>
+          <h2 id="tagline">
+            <div>
+              {'BIENVENIDOS AL SOFTWARE QUE'.split('').map((char, i) => (
+                <span key={`l1-${i}`} className="tchar">{char === ' ' ? '\u00A0' : char}</span>
+              ))}
+            </div>
+            <div>
+              {'TRANSFORMA'.split('').map((char, i) => (
+                <span key={`l2-${i}`} className="tchar">{char === ' ' ? '\u00A0' : char}</span>
+              ))}
+            </div>
+          </h2>
         </div>
         <div id="bottom-line">
           <span className="mono">dualcodesolutions.com</span>

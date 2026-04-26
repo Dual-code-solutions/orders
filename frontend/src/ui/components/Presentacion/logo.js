@@ -57,29 +57,47 @@ const DRIFT_TRIS = [
   { sz: 58, clip:SHAPES[9], c:BLUES[13], rx:0.44, ry:0.14, tilt:1.6,  a0:0.3,  spd:0.18, op:0.14 }
 ];
 
-const LOGO_W = 266, LOGO_H = 229;
+const LOGO_W = 500, LOGO_H = 409;
 const LOGO_TRIS = [
-  { p:[[1,102.6],[1,57.6],[159.5,72.1],[186.5,72.1],[265.5,113.1],[265.5,172.6],[186.5,211.1],[102,183.1],[103,133.6],[97.5,137.6],[80.5,147.6],[1,102.6]], bg:'linear-gradient(160deg, #ddeeff 0%, #c8d8e8 40%, #a8c0da 100%)', z:2 },
-  { p:[[102.5,165.1],[102.5,154.6],[113,159.6],[102.5,165.1]], bg:'linear-gradient(135deg, #68c882 0%, #4ea661 60%, #2e8040 100%)', z:4 },
-  { p:[[80.5,84.6],[154.5,45.6],[80.5,6.1],[67,13.1],[62,10.6],[80.5,0.6],[161,44.1],[161,71.6],[80.5,113.1],[80.5,84.6]], bg:'linear-gradient(140deg, #4a78d8 0%, #2d5bbf 45%, #1a3a8a 100%)', z:3 },
-  { p:[[80.5,113.1],[80.5,84.6],[7.5,45.1],[66.5,13.1],[62.5,10.6],[1,42.6],[1,71.6],[80.5,113.1]], bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:3 },
-  { p:[[79.5,156.6],[80.5,126.6],[160.5,83.1],[160,114.1],[79.5,156.6]], bg:'linear-gradient(155deg, #3565c8 0%, #1f4da0 50%, #0e3070 100%)', z:3 },
-  { p:[[80,156.6],[80.5,127.1],[0.5,83.1],[0.5,113.1],[80,156.6]], bg:'linear-gradient(155deg, #192e72 0%, #0c1e4b 55%, #060f28 100%)', z:3 },
-  { p:[[81,84.6],[7.5,45.1],[81,6.6],[154,46.1],[81,84.6]], bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:5 },
-  { p:[[103,171.1],[103,165.1],[177.5,124.6],[177.5,75.6],[209.5,58.6],[212,63.6],[182.5,79.6],[182.5,127.6],[103,171.1]], bg:'linear-gradient(145deg, #2a4898 0%, #1e3870 50%, #0c2050 100%)', z:3 },
-  { p:[[209,44.1],[234.5,56.1],[222,68.1],[209.5,56.1],[209,44.1]], bg:'linear-gradient(135deg, #a0d870 0%, #85bc6b 50%, #5a9840 100%)', z:5 },
-  { p:[[209.5,56.1],[234.5,56.1],[222,68.1],[209.5,56.1]], bg:'linear-gradient(135deg, #70b850 0%, #5a9840 100%)', z:5 },
-  { p:[[215.5,56.1],[228.5,56.1],[222,62.1],[215.5,56.1]], bg:'radial-gradient(circle, #ffffff 0%, #e8f8e0 100%)', z:6 },
-  { p:[[21.5,157.1],[46.5,157.1],[34,169.1],[21.5,157.1]], bg:'linear-gradient(135deg, #1e3870 0%, #0c1e4b 100%)', z:5 },
-  { p:[[21.5,157.1],[46.5,157.1],[34,145.1],[21.5,157.1]], bg:'linear-gradient(135deg, #284080 0%, #162d6e 100%)', z:5 },
-  { p:[[27.5,157.1],[40.5,157.1],[34,163.1],[27.5,157.1]], bg:'radial-gradient(circle, #ffffff 0%, #d0e0ff 100%)', z:6 },
-  { p:[[104.5,171.1],[102.5,165.6],[80.5,177.6],[45,160.1],[43,164.6],[80.5,183.6],[104.5,171.1]], bg:'linear-gradient(160deg, #091832 0%, #041b44 50%, #020d20 100%)', z:4 },
-  { p:[[124,153.1],[115.5,147.6],[144.5,131.6],[154,137.1],[124,153.1]], bg:'linear-gradient(135deg, #68c878 0%, #4ea661 55%, #306840 100%)', z:4 },
-  { p:[[185.5,185.6],[185.5,156.6],[173,150.1],[192,138.6],[192,132.1],[141,161.6],[185.5,185.6]], bg:'linear-gradient(145deg, #50b870 0%, #3da260 50%, #1e7040 100%)', z:4 },
-  { p:[[185.5,186.1],[185.5,156.6],[258.5,116.1],[195,82.6],[201.5,79.6],[265.5,113.6],[265.5,142.6],[185.5,186.1]], bg:'linear-gradient(135deg, #a8e080 0%, #8aca6d 40%, #60a048 100%)', z:3 },
-  { p:[[177.5,82.1],[177.5,76.1],[168.5,80.6],[168.5,86.1],[177.5,82.1]], bg:'linear-gradient(135deg, #80c060 0%, #6aaa50 55%, #408830 100%)', z:4 },
-  { p:[[185,227.6],[185,197.1],[265.5,155.1],[265.5,184.1],[185,227.6]], bg:'linear-gradient(150deg, #98d878 0%, #86c76c 45%, #58a048 100%)', z:3 },
-  { p:[[185,227.6],[185,197.1],[129,169.1],[102.5,183.6],[185,227.6]], bg:'linear-gradient(145deg, #3ab878 0%, #29975b 55%, #186040 100%)', z:3 },
+  { d:'M499 278.5V253L349 354L499 278.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:3 },
+  { d:'M348.5 354.5V329.5L498.5 254.5L348.5 354.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:4 },
+  { d:'M348.5 355V333L295.5 328.5L348.5 355Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:5 },
+  { d:'M301.5 330.27L353.5 334L313.67 311L301.5 330.27Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:6 },
+  { d:'M303.253 332.5L314.5 308.5L270 316.955L303.253 332.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:7 },
+  { d:'M286.5 300.5L311.5 314L270 316.5L286.5 300.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:8 },
+  { d:'M292 327V296.469L219.5 293L292 327Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:9 },
+  { d:'M261.5 286L286.5 299.5L245 302L261.5 286Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:10 },
+  { d:'M3 180.5V115L149.5 245.5L3 180.5Z', bg:'linear-gradient(145deg, #e0e6ed 0%, #c8d4df 50%, #a8bac9 100%)', z:11 },
+  { d:'M150.5 245.5V171.949L30.5 140.5L150.5 245.5Z', bg:'linear-gradient(145deg, #e0e6ed 0%, #c8d4df 50%, #a8bac9 100%)', z:12 },
+  { d:'M289.058 80.9846L151.058 150.477V9.47748L289.058 80.9846Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:13 },
+  { d:'M490 209.5L349 280.5V139L490 209.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:14 },
+  { d:'M151.058 150.477V8.47748L14.0583 79.2248L151.058 150.477Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:15 },
+  { d:'M150.5 243V187.241L270.5 144L150.5 243Z', bg:'linear-gradient(145deg, #e0e6ed 0%, #c8d4df 50%, #a8bac9 100%)', z:16 },
+  { d:'M300.5 162L180.682 213.356L300.5 118.5V162Z', bg:'linear-gradient(145deg, #e0e6ed 0%, #c8d4df 50%, #a8bac9 100%)', z:17 },
+  { d:'M192 329V277L265 291L192 329Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:18 },
+  { d:'M192 325V253L288 272.385L192 325Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:19 },
+  { d:'M253 297V245L326 259L253 297Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:20 },
+  { d:'M277 233.5L197.5 275.5L194 210L277 233.5Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:21 },
+  { d:'M349.5 281L349 139L198.5 204.5L349.5 281Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:22 },
+  { d:'M192.113 295.956V277.065L211.889 286.061L192.113 295.956Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:23 },
+  { d:'M150.677 151.127L290.053 80.9606L150.677 9.89519L125.25 22.489L115.833 17.9912L150.677 0L302.295 78.2619V127.738L150.677 202.401V151.127Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:24 },
+  { d:'M150.677 202.401V151.127L13.1842 80.0611L124.308 22.489L116.774 17.9912L0.941711 75.5632V127.738L150.677 202.401Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:25 },
+  { d:'M148.793 280.663L150.677 226.689L301.353 148.428L300.412 204.2L148.793 280.663Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:26 },
+  { d:'M149.735 280.663L150.677 227.589L0 148.428V202.401L149.735 280.663Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:27 },
+  { d:'M193.055 306.75V295.956L333.372 223.091V134.934L393.643 104.349C394.458 108.794 395.312 110.924 398.351 113.345L342.789 142.131V228.488L193.055 306.75Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:28 },
+  { d:'M417.186 122.341C430.709 122.341 441.671 112.272 441.671 99.8514C441.671 87.4311 430.709 77.3624 417.186 77.3624C403.663 77.3624 392.701 87.4311 392.701 99.8514C392.701 112.272 403.663 122.341 417.186 122.341Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:29 },
+  { d:'M417.186 111.546C424.467 111.546 430.37 106.31 430.37 99.8514C430.37 93.3928 424.467 88.1571 417.186 88.1571C409.905 88.1571 404.002 93.3928 404.002 99.8514C404.002 106.31 409.905 111.546 417.186 111.546Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:30 },
+  { d:'M417.186 122.341C430.709 122.341 441.671 112.272 441.671 99.8514C441.671 87.4311 430.709 77.3624 417.186 77.3624C403.663 77.3624 392.701 87.4311 392.701 99.8514C392.701 112.272 403.663 122.341 417.186 122.341Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:31 },
+  { d:'M417.186 111.546C424.467 111.546 430.37 106.31 430.37 99.8514C430.37 93.3928 424.467 88.1571 417.186 88.1571C409.905 88.1571 404.002 93.3928 404.002 99.8514C404.002 106.31 409.905 111.546 417.186 111.546Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:32 },
+  { d:'M63.0959 304.052C76.6185 304.052 87.5808 293.983 87.5808 281.563C87.5808 269.142 76.6185 259.074 63.0959 259.074C49.5732 259.074 38.6109 269.142 38.6109 281.563C38.6109 293.983 49.5732 304.052 63.0959 304.052Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:33 },
+  { d:'M63.0959 293.257C70.3773 293.257 76.2801 288.021 76.2801 281.563C76.2801 275.104 70.3773 269.868 63.0959 269.868C55.8145 269.868 49.9117 275.104 49.9117 281.563C49.9117 288.021 55.8145 293.257 63.0959 293.257Z', bg:'linear-gradient(150deg, #ffffff 0%, #eef4ff 45%, #d0e4ff 100%)', z:34 },
+  { d:'M198 304.5C198 302.5 199.256 296.199 198 293.5L150.677 318.445L83.8139 286.96L80.047 295.056L150.677 329.24C165.43 321.744 199 303.5 198 304.5Z', bg:'linear-gradient(145deg, #162d6e 0%, #0b1d4c 55%, #050e28 100%)', z:35 },
+  { d:'M232.607 274.366L216.598 264.471L271.218 235.685L289.111 245.58L232.607 274.366Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:36 },
+  { d:'M348.44 332.838V280.663L324.897 268.969L360.682 248.279V236.585L264.626 289.659L348.44 332.838Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:37 },
+  { d:'M348.44 333.737V280.663L485.932 207.799L366.333 147.528L378.575 142.131L499.117 203.301V255.475L348.44 333.737Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:38 },
+  { d:'M333.372 146.629V135.834L316.421 143.93V153.825L333.372 146.629Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:39 },
+  { d:'M347.498 408.401V353.528L499.117 277.964V330.139L347.498 408.401Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:40 },
+  { d:'M347.498 408.401V353.528L242.024 303.152L192.113 329.24L347.498 408.401Z', bg:'linear-gradient(135deg, #a0d870 0%, #68c882 50%, #2e8040 100%)', z:41 },
 ];
 
 /* ─── Estado del orbit ────────────────────────────────────── */
@@ -125,7 +143,7 @@ function createWordEl() {
     font-family:'Cormorant Garamond', serif;
     font-weight:600;
     font-style:italic;
-    font-size:clamp(3rem, 7vw, 6.5rem);
+    font-size:clamp(1.5rem, 8vw, 6.5rem);
     letter-spacing:0.18em;
     text-transform:uppercase;
     color: #d8eaf4;
@@ -233,15 +251,7 @@ function hideWord() {
   });
 }
 
-function toPolygon(pts) {
-  return `polygon(${pts.map(([x,y])=>`${x}px ${y}px`).join(', ')})`;
-}
 
-function makeScattered(pts) {
-  const dirs = [[-720,-440],[720,-440],[-720,440],[720,440],[0,-600],[0,600],[-820,0],[820,0]];
-  const [ex,ey] = dirs[Math.floor(Math.random()*dirs.length)];
-  return pts.map(() => [ex+(Math.random()-.5)*90, ey+(Math.random()-.5)*90]);
-}
 
 function assembleLogo() {
   return new Promise(resolve => {
@@ -250,8 +260,9 @@ function assembleLogo() {
     if (!wrap || !cont) { resolve(); return; }
     wrap.style.opacity = '1';
     
-    // Escalar el contenedor base del logo para móviles
-    gsap.set(cont, { scale: 1.1 * globalScale });
+    // Escalar el contenedor base del logo para móviles.
+    // Base 500x409. Para mantener visualmente la proporción antigua, multiplicamos por 0.6
+    gsap.set(cont, { scale: 0.6 * globalScale });
 
     let done = 0;
     LOGO_TRIS.forEach((tri, i) => {
@@ -261,14 +272,24 @@ function assembleLogo() {
         width:${LOGO_W}px; height:${LOGO_H}px;
         background: ${tri.bg};
         z-index:${tri.z};
-        will-change:clip-path,transform;
+        will-change:clip-path,transform,opacity;
         filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+        clip-path: path('${tri.d}');
+        opacity: 0;
       `;
-      el.style.clipPath = toPolygon(makeScattered(tri.p));
       cont.appendChild(el);
 
+      const dirs = [[-720,-440],[720,-440],[-720,440],[720,440],[0,-600],[0,600],[-820,0],[820,0]];
+      const [ex,ey] = dirs[Math.floor(Math.random()*dirs.length)];
+      const sx = ex + (Math.random()-0.5)*90;
+      const sy = ey + (Math.random()-0.5)*90;
+
+      gsap.set(el, { x: sx, y: sy });
+
       gsap.to(el, {
-        clipPath:  toPolygon(tri.p),
+        x: 0,
+        y: 0,
+        opacity: 1,
         duration:  1.2,
         delay:     0.25 + Math.random() * 0.85,
         ease:      'power4.out',
@@ -296,12 +317,12 @@ function addCircuit() {
     opacity:0; transition:opacity 1s; pointer-events:none;
   `;
   const path = document.createElementNS(NS, 'path');
-  path.setAttribute('d','M 222 56 L 182 80 L 177 100 L 133 130 L 80 157 L 34 157');
+  path.setAttribute('d','M 150 150 L 290 80 L 393 104 L 417 122');
   path.setAttribute('fill','none'); path.setAttribute('stroke','#00ffff');
-  path.setAttribute('stroke-width','1'); path.setAttribute('stroke-linecap','round');
+  path.setAttribute('stroke-width','2'); path.setAttribute('stroke-linecap','round');
   path.setAttribute('stroke-linejoin','round');
   path.setAttribute('opacity','0.75');
-  [[222,56],[182,80],[133,130],[80,157],[34,157]].forEach(([px,py]) => {
+  [[150,150],[290,80],[393,104],[417,122]].forEach(([px,py]) => {
     const c = document.createElementNS(NS,'circle');
     c.setAttribute('cx',px); c.setAttribute('cy',py);
     c.setAttribute('r','2.5'); c.setAttribute('fill','#001a1a');
@@ -408,7 +429,7 @@ function animateBrand() {
   const logoPieces = document.getElementById('logo-pieces');
   if (logoPieces) {
     const tris = Array.from(logoPieces.querySelectorAll('div'));
-    gsap.to(logoPieces, { scale: 2.2 * globalScale, duration: 0.6, delay: 5.5, ease: 'power2.out', transformOrigin: 'center center' });
+    gsap.to(logoPieces, { scale: 1.2 * globalScale, duration: 0.6, delay: 5.5, ease: 'power2.out', transformOrigin: 'center center' });
     const circuitSvg = logoPieces.querySelector('svg');
     if (circuitSvg) gsap.to(circuitSvg, { opacity: 0, duration: 0.4, delay: 5.5 });
 
@@ -474,9 +495,9 @@ function animateBrand() {
   const logoWrapFade = document.getElementById('logo-wrap');
   const allFadeEls = [splash, logoWrapFade, ...bigEls].filter(Boolean);
 
-  setTimeout(() => window.dispatchEvent(new CustomEvent('trigger-planet-explosion')), 7500);
+  setTimeout(() => window.dispatchEvent(new CustomEvent('trigger-planet-explosion')), 8500);
 
-  gsap.to(allFadeEls, { opacity: 0, duration: 1.5, delay: 7.5, ease: 'power2.inOut' });
+  gsap.to(allFadeEls, { opacity: 0, duration: 1.5, delay: 8.5, ease: 'power2.inOut' });
 }
 
 async function act1() {
