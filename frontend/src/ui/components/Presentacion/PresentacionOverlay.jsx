@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import './Presentacion.css';
 import { initSpace } from './space.js';
 import { initSound } from './sound.js';
@@ -35,7 +36,7 @@ export const PresentacionOverlay = ({ onExplosion, fadeOut }) => {
     };
   }, [onExplosion]);
 
-  return (
+  return createPortal(
     <div
       id="presentation-container"
       ref={containerRef}
@@ -73,6 +74,7 @@ export const PresentacionOverlay = ({ onExplosion, fadeOut }) => {
           <span className="mono">dualcodesolutions.com</span>
         </div>
       </main>
-    </div>
+    </div>,
+    document.body
   );
 };
